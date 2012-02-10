@@ -62,7 +62,8 @@ def run_payload(uri, payload)
 	puts "Sending attack request\n"
 	t2 = run_request http, uri, payload 
 	puts "\n"
-	puts "Difference between benign and attack: " + (t2-t1).round(4).to_s + " (" + (t2/t1*100).round(1).to_s + "%)\n\n"
+	printf "Difference between benign and attack: %.4f (%.1f", (t2-t1), (t2/t1*100)
+	puts "%)\n\n"
 end
 def preflight(uri) 
 	#For some reason this speeds up connect on windows
@@ -88,4 +89,4 @@ end
 
 puts "Running java payload\n"
 payload = build_java_payload(parameters)
-run_payload(uri, payload)
+run_payload uri, payload
